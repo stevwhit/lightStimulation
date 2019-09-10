@@ -3,6 +3,7 @@ import socket
 import smtplib, ssl
 import fcntl
 import struct
+import time
 
 def get_ip_address(ifname):
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -38,5 +39,6 @@ def sendEmail(message):
         server.quit()
 
 # get the ip address
+time.sleep(120)
 ipAddress = get_ip_address(b'wlan0') #Function call
 sendEmail(ipAddress)
