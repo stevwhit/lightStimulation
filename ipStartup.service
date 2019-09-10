@@ -1,0 +1,18 @@
+# this is a service file to run teh ip startup code
+# it should be moved from the home directory to the
+# appropriate systemd direction
+
+[Unit]
+Description=IP Startup Message
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 -u ipStartup.py
+WorkingDirectory=/home/pi/lightStimulation
+StandardOutput=inherit
+StandardError=inherit
+Restart=never
+User=pi
+
+[Install]
+WantedBy=multi-user.target
