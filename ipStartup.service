@@ -11,7 +11,6 @@ ExecStart=/usr/bin/python3 -u ipStartup.py
 WorkingDirectory=/home/pi/lightStimulation
 StandardOutput=inherit
 StandardError=inherit
-Restart=never
 User=pi
 
 [Install]
