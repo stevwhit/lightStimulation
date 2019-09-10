@@ -38,5 +38,5 @@ def sendEmail(message):
         server.quit()
 
 # get the ip address
-ipAddress = get_ip_address('eth0') #Function call
+ipAddress = get_ip_address(b'eth0') #Function call
 sendEmail(ipAddress)
