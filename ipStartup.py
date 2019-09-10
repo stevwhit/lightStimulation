@@ -1,16 +1,19 @@
 # socket library is required for this
 import socket
 import smtplib, ssl
+import fcntl
+import struct
 
-# Function to display hostname and
-# IP address
-def get_Host_name_IP():
-    try:
-        host_name = socket.gethostname()
-        host_ip = socket.gethostbyname(host_name)
-        return host_ip
-    except:
-        print("Unable to get Hostname and IP")
+def get_ip_address(ifname):
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    return socket.inet_ntoa(fcntl.ioctl(
+        s.fileno(),
+        0x8915,  # SIOCGIFADDR
+        struct.pack('256s', ifname[:15])
+    )[20:24])
+
+print get_ip_address('lo')
+print get_ip_address('eth0')
 
 # send the email
 def sendEmail(message):
@@ -38,5 +41,5 @@ def sendEmail(message):
         server.quit()
 
 # get the ip address
-ipAddress = get_Host_name_IP() #Function call
+ipAddress = get_ip_address('eth0') #Function call
 sendEmail(ipAddress)
