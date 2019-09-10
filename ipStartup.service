@@ -1,6 +1,6 @@
 # this is a service file to run teh ip startup code
 # it should be moved from the home directory to the
-# appropriate systemd direction
+# appropriate systemd directory
 
 [Unit]
 Description=IP Startup Message
