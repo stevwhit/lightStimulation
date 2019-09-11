@@ -7,11 +7,14 @@ import time
 
 def get_ip_address(ifname):
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    return socket.inet_ntoa(fcntl.ioctl(
-        s.fileno(),
-        0x8915,  # SIOCGIFADDR
-        struct.pack('256s', ifname[:15])
-    )[20:24])
+    try:
+        return socket.inet_ntoa(fcntl.ioctl(
+            s.fileno(),
+            0x8915,  # SIOCGIFADDR
+            struct.pack('256s', ifname[:15])
+            )[20:24])
+    except:
+        return "undefined"
 
 # send the email
 def sendEmail(message):
@@ -40,5 +43,8 @@ def sendEmail(message):
 
 # get the ip address
 time.sleep(120)
-ipAddress = get_ip_address(b'wlan0') #Function call
-sendEmail(ipAddress)
+wlan = get_ip_address(b'wlan0') #Function call
+eth = get_ip_address(b'eth0')
+message = "Wireless: " + wlan + "\n"
+message = message + "Ethernet: " + eth + "\n"
+sendEmail(message)
