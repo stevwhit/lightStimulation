@@ -17,7 +17,7 @@ def get_ip_address(ifname):
         return "undefined"
 
 # send the email
-def sendEmail(message):
+def sendEmail():
     smtp_server = "smtp.gmail.com"
     port = 587  # For starttls
     sender_email = "lightstimulation@gmail.com"
@@ -34,7 +34,7 @@ def sendEmail(message):
         server.starttls(context=context) # Secure the connection
         server.ehlo() # Can be omitted
         server.login(sender_email, password)
-        server.sendmail(sender_email, "peters.taylor@gmail.com", message)
+        server.sendmail(sender_email, "peters.taylor@gmail.com", get_ip_address(b'wlan0'))
     except Exception as e:
         # Print any error messages to stdout
         print(e)
@@ -42,9 +42,10 @@ def sendEmail(message):
         server.quit()
 
 # get the ip address
-time.sleep(120)
-wlan = get_ip_address(b'wlan0') #Function call
-eth = get_ip_address(b'eth0')
-message = "Wireless: " + wlan + "\n"
-message = message + "Ethernet: " + eth + "\n"
-sendEmail(message)
+time.sleep(10)
+#wlan = get_ip_address(b'wlan0') #Function call
+#eth = get_ip_address(b'eth0')
+#output = "Wireless: " + wlan + " | "
+#output = output + "Ethernet: " + eth 
+#print(output)
+sendEmail()
