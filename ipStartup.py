@@ -42,7 +42,7 @@ def sendEmail():
         server.quit()
 
 # get the ip address
-time.sleep(10)
+time.sleep(30)
 #wlan = get_ip_address(b'wlan0') #Function call
 #eth = get_ip_address(b'eth0')
 #output = "Wireless: " + wlan + " | "
