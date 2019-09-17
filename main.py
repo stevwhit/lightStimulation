@@ -42,7 +42,7 @@ def columnSet(column):
     # sets up frequency and duty cycle
     x = 0 #placeholder code
 
-def PWMstart():
+def runPWM():
     # todo: write function that starts PWM for all desired columns
     x = 0
 
