@@ -39,12 +39,12 @@ GPIO.setup(25, GPIO.OUT)
 
 def columnSet(column):
     #todo: write a function that takes user column input and
-    # sets up frequency and duty cycle
+    # sets up frequency and duty cycle for that column
     x = 0 #placeholder code
 
-def runPWM():
+def runPWM(pwmArray):
     # todo: write function that starts PWM for all desired columns
-    x = 0
+    x = 0 #placeholder code
 
 
 while(1):
@@ -58,7 +58,7 @@ while(1):
     print("|  3  | *** | *** | *** | *** | *** | *** |")
     print("|  4  | *** | *** | *** | *** | *** | *** |")
     print("|-----|-----|-----|-----|-----|-----|-----|")
-    column = input("Selection, A - F: ")
+    column = list(input("Selection, A - F: ")) 
 
     #below loop performs input validation, confirms in put is a, b, c, d, e, f
     #can be either upper or lowercase
