@@ -26,37 +26,37 @@
 #            GND [ ] [ ] GPIO 21 / SCLK
 #             Pin 39 Pin 40
 
-#import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 
 # set the pin numbering scheme
-#GPIO.setmode(BCM)
+GPIO.setmode(BCM)
 #set all pins to output mode
-#GPIO.setup(14, GPIO.OUT)
-#GPIO.setup(15, GPIO.OUT)
-#GPIO.setup(18, GPIO.OUT)
-#GPIO.setup(23, GPIO.OUT)
-#GPIO.setup(24, GPIO.OUT)
-#GPIO.setup(25, GPIO.OUT)
+GPIO.setup(14, GPIO.OUT)
+GPIO.setup(15, GPIO.OUT)
+GPIO.setup(18, GPIO.OUT)
+GPIO.setup(23, GPIO.OUT)
+GPIO.setup(24, GPIO.OUT)
+GPIO.setup(25, GPIO.OUT)
 
 high = False
 print("Press enter to toggle GPIO lines")
 while(1):
     x = input("")
     if (high == False):
-        #GPIO.output(14, GPIO.HIGH)
-        #GPIO.output(15, GPIO.HIGH)
-        #GPIO.output(18, GPIO.HIGH)
-        #GPIO.output(23, GPIO.HIGH)
-        #GPIO.output(24, GPIO.HIGH)
-        #GPIO.output(25, GPIO.HIGH)
+        GPIO.output(14, GPIO.HIGH)
+        GPIO.output(15, GPIO.HIGH)
+        GPIO.output(18, GPIO.HIGH)
+        GPIO.output(23, GPIO.HIGH)
+        GPIO.output(24, GPIO.HIGH)
+        GPIO.output(25, GPIO.HIGH)
         print("GPIO lines set to high")
         high = True
     else:
-        #GPIO.output(14, GPIO.LOW)
-        #GPIO.output(15, GPIO.LOW)
-        #GPIO.output(18, GPIO.LOW)
-        #GPIO.output(23, GPIO.LOW)
-        #GPIO.output(24, GPIO.LOW)
-        #GPIO.output(25, GPIO.LOW)
+        GPIO.output(14, GPIO.LOW)
+        GPIO.output(15, GPIO.LOW)
+        GPIO.output(18, GPIO.LOW)
+        GPIO.output(23, GPIO.LOW)
+        GPIO.output(24, GPIO.LOW)
+        GPIO.output(25, GPIO.LOW)
         print("GPIO lines set to low")
         high = False
