@@ -58,11 +58,10 @@ while(1):
     print("|  3  | *** | *** | *** | *** | *** | *** |")
     print("|  4  | *** | *** | *** | *** | *** | *** |")
     print("|-----|-----|-----|-----|-----|-----|-----|")
-    column = list(input("Selection, A - F: ")) 
+    column = list(input("Selection, A - F: "))
 
     #below loop performs input validation, confirms in put is a, b, c, d, e, f
     #can be either upper or lowercase
-    #todo: make it handle string inputs, not just character inputs
-    while not(((ord(column) >= 65 and ord(column) <= 70) or (ord(column)>=97 and ord(column)<=102))):
+    while not(((ord(column[0]) >= 65 and ord(column[0]) <= 70) or (ord(column[0])>=97 and ord(column[0])<=102))):
         print("Input rejected, please type a letter A through F\n")
         column = input("Selection, A - F: ")
