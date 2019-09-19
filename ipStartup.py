@@ -34,7 +34,10 @@ def sendEmail():
         server.starttls(context=context) # Secure the connection
         server.ehlo() # Can be omitted
         server.login(sender_email, password)
-        server.sendmail(sender_email, "peters.taylor@gmail.com", get_ip_address(b'wlan0'))
+        try:
+            server.sendmail(sender_email, "peters.taylor@gmail.com", get_ip_address(b'wlan0'))
+        except:
+            server.sendmail(sender_email, "peters.taylor@gmail.com", get_ip_address(b'eth0'))
     except Exception as e:
         # Print any error messages to stdout
         print(e)
@@ -46,6 +49,6 @@ time.sleep(30)
 #wlan = get_ip_address(b'wlan0') #Function call
 #eth = get_ip_address(b'eth0')
 #output = "Wireless: " + wlan + " | "
-#output = output + "Ethernet: " + eth 
+#output = output + "Ethernet: " + eth
 #print(output)
 sendEmail()
