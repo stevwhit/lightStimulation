@@ -29,7 +29,7 @@
 import RPi.GPIO as GPIO
 
 # set the pin numbering scheme
-GPIO.setmode(BCM)
+GPIO.setmode(GPIO.BCM)
 #set all pins to output mode
 GPIO.setup(14, GPIO.OUT)
 GPIO.setup(15, GPIO.OUT)
