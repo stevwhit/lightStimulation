@@ -38,11 +38,10 @@ def sendEmail():
             server.sendmail(sender_email, "peters.taylor@gmail.com", get_ip_address(b'wlan0'))
         except:
             server.sendmail(sender_email, "peters.taylor@gmail.com", get_ip_address(b'eth0'))
+        server.quit()
     except Exception as e:
         # Print any error messages to stdout
         print(e)
-    finally:
-        server.quit()
 
 # get the ip address
 time.sleep(30)
