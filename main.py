@@ -99,7 +99,7 @@ while(1):
     columnSet(column, pwmArray, DCArray)
 
     #todo: add input validation here for yes or no
-    print("Would you like to set another column?"
+    print("Would you like to set another column?")
     response = input("Type Yes or No: ")
     if response == "Yes":
         setting = True
@@ -112,7 +112,7 @@ while(1):
             print("Input rejected, please type a letter A through F\n")
             column = input("Selection, A - F: ")
         columnSet(column, pwmArray, DCArray)
-        print("Would you like to set another column?"
+        print("Would you like to set another column?")
         response = input("Type Yes or No: ")
         if response == "Yes":
             setting = True
