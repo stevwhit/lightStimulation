@@ -39,7 +39,7 @@ GPIO.setup(25, GPIO.OUT) #F
 
 def columnSet(column, objects, dutyCycles):
     # sets up frequency and duty cycle for that column
-    print("You have selected to program Column " + str(column)
+    print("You have selected to program Column " + str(column))
     freq = input("Please select the frequency: ")
     dc = input("Please select the duty cycle: ")
 
