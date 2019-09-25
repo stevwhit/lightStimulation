@@ -40,7 +40,9 @@ GPIO.setup(25, GPIO.OUT)
 def columnSet(column):
     #todo: write a function that takes user column input and
     # sets up frequency and duty cycle for that column
-    x = 0 #placeholder code
+    print("You have selected to program Column " + column)
+    freq = input("Please select the frequency: ")
+    dc = input("Please select the duty cycle: ")
 
 def runPWM(pwmArray):
     # todo: write function that starts PWM for all desired columns
@@ -65,3 +67,5 @@ while(1):
     while not(((ord(column[0]) >= 65 and ord(column[0]) <= 70) or (ord(column[0])>=97 and ord(column[0])<=102))):
         print("Input rejected, please type a letter A through F\n")
         column = input("Selection, A - F: ")
+
+    columnSet(column)
