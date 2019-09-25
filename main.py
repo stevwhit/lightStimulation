@@ -30,19 +30,43 @@ import RPi.GPIO as GPIO
 # set the pin numbering scheme
 GPIO.setmode(GPIO.BCM)
 #set all pins to output mode
-GPIO.setup(14, GPIO.OUT)
-GPIO.setup(15, GPIO.OUT)
-GPIO.setup(18, GPIO.OUT)
-GPIO.setup(23, GPIO.OUT)
-GPIO.setup(24, GPIO.OUT)
-GPIO.setup(25, GPIO.OUT)
+GPIO.setup(14, GPIO.OUT) #A
+GPIO.setup(15, GPIO.OUT) #B
+GPIO.setup(18, GPIO.OUT) #C
+GPIO.setup(23, GPIO.OUT) #D
+GPIO.setup(24, GPIO.OUT) #E
+GPIO.setup(25, GPIO.OUT) #F
 
-def columnSet(column):
-    #todo: write a function that takes user column input and
+def columnSet(column, objects, dutyCycles):
     # sets up frequency and duty cycle for that column
-    print("You have selected to program Column " + column)
+    print("You have selected to program Column " + str(column)
     freq = input("Please select the frequency: ")
     dc = input("Please select the duty cycle: ")
+
+    # this is basically a switch case that controls
+    # what pin we activate and where the pwm object is stored
+    # based on the user-selected column
+    if column == "A":
+        pin = 14
+        offset = 0
+    elif column == "B":
+        pin = 15
+        offset = 1
+    elif column == "C":
+        pin = 18
+        offset = 2
+    elif column == "D":
+        pin = 23
+        offset = 3
+    elif column == "E":
+        pin = 24
+        offset = 4
+    elif column == "F":
+        pin = 25
+        offset = 5
+
+    objects[offset] = GPIO.PWM(pin, freq)
+    dutyCycles[offset] = dc
 
 def runPWM(pwmArray):
     # todo: write function that starts PWM for all desired columns
@@ -68,4 +92,8 @@ while(1):
         print("Input rejected, please type a letter A through F\n")
         column = input("Selection, A - F: ")
 
-    columnSet(column)
+    # these arrays will store current settings in memory
+    pwmArray = [0, 0, 0, 0, 0, 0];
+    DCArray = [0, 0, 0, 0, 0, 0];
+    columnSet(column, pwmArray, DCArray)
+    print(DCArray)
