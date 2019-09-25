@@ -41,8 +41,8 @@ def columnSet(column, objects, dutyCycles):
     # sets up frequency and duty cycle for that column
     column = str(column[0])
     print("You have selected to program Column " + column)
-    freq = str2num(input("Please select the frequency: "))
-    dc = str2num(input("Please select the duty cycle: "))
+    freq = float(input("Please select the frequency: "))
+    dc = float(input("Please select the duty cycle: "))
 
     # this is basically a switch case that controls
     # what pin we activate and where the pwm object is stored
