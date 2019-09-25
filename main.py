@@ -97,4 +97,24 @@ while(1):
     pwmArray = ["", "", "", "", "", ""];
     DCArray = [0, 0, 0, 0, 0, 0];
     columnSet(column, pwmArray, DCArray)
-    print(DCArray)
+
+    #todo: add input validation here for yes or no
+    print("Would you like to set another column?"
+    response = input("Type Yes or No: ")
+    if response == "Yes":
+        setting = True
+    else:
+        setting = False
+
+    while(setting):
+        column = list(input("Selection, A - F: "))
+        while not(((ord(column[0]) >= 65 and ord(column[0]) <= 70) or (ord(column[0])>=97 and ord(column[0])<=102))):
+            print("Input rejected, please type a letter A through F\n")
+            column = input("Selection, A - F: ")
+        columnSet(column, pwmArray, DCArray)
+        print("Would you like to set another column?"
+        response = input("Type Yes or No: ")
+        if response == "Yes":
+            setting = True
+        else:
+            setting = False
