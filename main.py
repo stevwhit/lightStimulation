@@ -24,7 +24,7 @@
 #        GPIO 26 [ ] [ ] GPIO 20 / MOSI
 #            GND [ ] [ ] GPIO 21 / SCLK
 #             Pin 39 Pin 40
-#change 
+#change
 
 import RPi.GPIO as GPIO
 
@@ -37,6 +37,7 @@ GPIO.setup(18, GPIO.OUT) #C
 GPIO.setup(23, GPIO.OUT) #D
 GPIO.setup(24, GPIO.OUT) #E
 GPIO.setup(25, GPIO.OUT) #F
+GPIO.setwarnings(False) 
 
 def columnSet(column, objects, dutyCycles):
     # sets up frequency and duty cycle for that column
