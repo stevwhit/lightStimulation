@@ -24,6 +24,7 @@
 #        GPIO 26 [ ] [ ] GPIO 20 / MOSI
 #            GND [ ] [ ] GPIO 21 / SCLK
 #             Pin 39 Pin 40
+#change 
 
 import RPi.GPIO as GPIO
 
