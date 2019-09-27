@@ -121,7 +121,7 @@ def runPWM(pwmArray, DCArray):
     #input validation on run selection
     selection = 99
     selection = int(input("Make a selection: "))
-    while input != 1 and input!= 2:
+    while selection != 1 and selection != 2:
         print("Input rejected, try again.")
         selection = input("Make a selection: ")
 
@@ -144,7 +144,7 @@ def runPWM(pwmArray, DCArray):
         length = float(input("Enter the program length in minutes: "))
         #convert to seconds b/c that's how time library works
         length = length * 60
-
+        x = input("Press enter to begin the PWM on all programmed channels: ")
         startAll(DCArray, pwmArray)
         startTime = time.time()
 
