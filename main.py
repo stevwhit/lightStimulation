@@ -40,7 +40,7 @@ GPIO.setup(25, GPIO.OUT) #F
 GPIO.setwarnings(False)
 
 def printStartup():
-    # function that simply prints the start up screen 
+    # function that simply prints the start up screen
     print("Welcome to the Light Stimulation set up process!")
     print("Below is a visual representation of the LED array.")
     print("Please select a column you would like to program.")
@@ -51,7 +51,6 @@ def printStartup():
     print("|  3  | *** | *** | *** | *** | *** | *** |")
     print("|  4  | *** | *** | *** | *** | *** | *** |")
     print("|-----|-----|-----|-----|-----|-----|-----|")
-
 
 def pinAndOffset(col):
     # function to get pin and offset from column value
