@@ -37,15 +37,9 @@ GPIO.setup(18, GPIO.OUT) #C
 GPIO.setup(23, GPIO.OUT) #D
 GPIO.setup(24, GPIO.OUT) #E
 GPIO.setup(25, GPIO.OUT) #F
-GPIO.setwarnings(False) 
+GPIO.setwarnings(False)
 
-def columnSet(column, objects, dutyCycles):
-    # sets up frequency and duty cycle for that column
-    column = str(column[0])
-    print("You have selected to program Column " + column)
-    freq = float(input("Please select the frequency: "))
-    dc = float(input("Please select the duty cycle: "))
-
+def pinAndOffset(col):
     # this is basically a switch case that controls
     # what pin we activate and where the pwm object is stored
     # based on the user-selected column
@@ -68,6 +62,15 @@ def columnSet(column, objects, dutyCycles):
         pin = 25
         offset = 5
 
+    return [pin, offset]
+
+def columnSet(column, objects, dutyCycles):
+    # sets up frequency and duty cycle for that column
+    print("You have selected to program Column " + column)
+    freq = float(input("Please select the frequency: "))
+    dc = float(input("Please select the duty cycle: "))
+
+    [pin, offset] = pinAndOffset(column)
     objects[offset] = GPIO.PWM(pin, freq)
     dutyCycles[offset] = dc
 
@@ -95,8 +98,10 @@ while(1):
         print("Input rejected, please type a letter A through F\n")
         column = input("Selection, A - F: ")
 
+    #column value MUST be converted to a string
+    column = str(column[0])
     # these arrays will store current settings in memory
-    pwmArray = ["", "", "", "", "", ""];
+    pwmArray = [0, 0, 0, 0, 0, 0];
     DCArray = [0, 0, 0, 0, 0, 0];
     columnSet(column, pwmArray, DCArray)
 
@@ -113,6 +118,7 @@ while(1):
         while not(((ord(column[0]) >= 65 and ord(column[0]) <= 70) or (ord(column[0])>=97 and ord(column[0])<=102))):
             print("Input rejected, please type a letter A through F\n")
             column = input("Selection, A - F: ")
+        column = str(column[0])
         columnSet(column, pwmArray, DCArray)
         print("Would you like to set another column?")
         response = input("Type Yes or No: ")
@@ -120,3 +126,5 @@ while(1):
             setting = True
         else:
             setting = False
+
+    runPWM(pwmArray, DCArray)
