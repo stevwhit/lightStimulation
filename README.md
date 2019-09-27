@@ -18,3 +18,4 @@ This code reads the device's IP address and sends an email out with the IP addre
 
 ### nice to have:
 - something that will store programmed settings in memory so user can access them later
+- program GUI for code 
