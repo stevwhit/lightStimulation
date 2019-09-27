@@ -48,10 +48,17 @@ def getColumn():
     print("4) Column D")
     print("5) Column E")
     print("6) Column F")
-    selection = int(input("Make a selection:"))
+    try:
+        selection = int(input("Make a selection:"))
+    except:
+        x = 0
+
     while selection != 1 and selection != 2 and selection != 3 and selection != 4 and selection !=5 and selection != 6:
         print("Input rejected, try again.")
-        selection = int(input("Make a selection: "))
+        try:
+            selection = int(input("Make a selection: "))
+        except:
+            x = 0 
 
     if selection == 1:
         column = "A"
@@ -201,10 +208,17 @@ while(loop):
     print("Would you like to set another column?")
     print("1) Yes")
     print("2) No")
-    selection = int(input("Make a selection: "))
+    try:
+        selection = int(input("Make a selection: "))
+    except:
+        x = 0
     while selection != 1 and selection != 2:
         print("Input rejected, try again.")
-        selection = int(input("Make a selection: "))
+        try:
+            selection = int(input("Make a selection: "))
+        except:
+            x = 0
+
     if selection == 1:
         setting = True
     else:
@@ -213,7 +227,7 @@ while(loop):
     while(setting):
         column = getColumn()
         columnSet(column, pwmArray, DCArray)
-        
+
         print("Would you like to set another column?")
         print("1) Yes")
         print("2) No")
