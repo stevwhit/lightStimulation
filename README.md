@@ -14,6 +14,7 @@ This code reads the device's IP address and sends an email out with the IP addre
 ## todo:
 ### requirements:
 - finish input validation on all user inputs
+- talk to miguel about his requirements for the software 
 
 ### nice to have:
 - something that will store programmed settings in memory so user can access them later
