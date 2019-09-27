@@ -13,12 +13,7 @@ This code reads the device's IP address and sends an email out with the IP addre
 
 ## todo:
 ### requirements:
-- create better input validation for user input
-- start PWM from user input
-- add ability for user to stop and restart whil running
-- add runtime information, so that while the LEDs are flashing and the program is running, a timer is set
-- add controls for user to start, and then later stop the programmed
+- create better input validation for user input on column selection
 
 ### nice to have:
 - something that will store programmed settings in memory so user can access them later
-- add abiliyt for user to set the code to run for a certain amount of time instead of manually stopping it 
