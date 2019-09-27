@@ -120,7 +120,7 @@ def runPWM(pwmArray, DCArray):
 
     #input validation on run selection
     selection = 99
-    selection = input("Make a selection: ")
+    selection = int(input("Make a selection: "))
     while input != 1 and input!= 2:
         print("Input rejected, try again.")
         selection = input("Make a selection: ")
