@@ -102,18 +102,58 @@ def columnSet(column, objects, dutyCycles):
     objects[offset] = GPIO.PWM(pin, freq)
     dutyCycles[offset] = dc
 
-def runPWM(pwmArray, DCArray):
-    x = input("Press enter to begin the PWM on all programmed channels: ")
-    # this for loop will start all PWM objects with a duty cycle
-    # that is not negative (i.e. the initial value)
-    startTime = time.time()
-    for ii, each in enumerate(DCArray):
+def startAll(DC, PWM):
+    for ii, each in enumerate(DC):
         if each >= 0:
-            pwmArray[ii].start(each)
+            PWM[ii].start(each)
 
-    x = input("Press enter to stop PWM on all programmed channels: ")
-    endTime = time.time()
-    print("Program ran for {0:.2f} seconds".format(endTime-startTime))
+def stopAll(DC, PWM):
+    for ii, each in enumerate(DC):
+        if each >=0:
+            PWM[ii].stop()
+
+def runPWM(pwmArray, DCArray):
+    print("Would you like to start and stop the program manually, or set it to run for a set time?")
+    print("Selection Option 1 or 2:")
+    print("1) Manual Start and Stop")
+    print("2) Timed Start and Stop")
+
+    #input validation on run selection
+    selection = 99
+    selection = input("Make a selection: ")
+    while input != 1 and input!= 2:
+        print("Input rejected, try again.")
+        selection = input("Make a selection: ")
+
+    #manual start and stop
+    if selection == 1:
+        x = input("Press enter to begin the PWM on all programmed channels: ")
+        # this for loop will start all PWM objects with a duty cycle
+        # that is not negative (i.e. the initial value)
+
+        startAll(DCArray, pwmArray)
+        startTime = time.time()
+
+        x = input("Press enter to stop PWM on all programmed channels: ")
+        stopAll(DCArray, pwmArray)
+        endTime = time.time()
+        print("Program ran for {0:.2f} seconds".format(endTime-startTime))
+
+    # timed start and stop
+    else:
+        length = float(input("Enter the program length in minutes: "))
+        #convert to seconds b/c that's how time library works
+        length = length * 60
+
+        startAll(DCArray, pwmArray)
+        startTime = time.time()
+
+        # do nothing while the program runs
+        time.sleep(length)
+
+        stopAll(DCArray, pwmArray)
+
+        print("{0:.2f} minute long program complete!".format(length/60))
 
 
 while(1):
