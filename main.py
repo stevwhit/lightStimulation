@@ -89,11 +89,14 @@ def columnSet(column, objects, dutyCycles):
     dutyCycles[offset] = dc
 
 def runPWM(pwmArray, DCArray):
+    x = input("Press enter to begin the PWM on all programmed channels: ")
     # this for loop will start all PWM objects with a duty cycle
     # that is not negative (i.e. the initial value)
     for ii, each in enumerate(DCArray):
         if each >= 0:
             pwmArray[ii].start(each)
+
+    x = input("Press enter to stop PWM on all programmed channels: ")
 
 
 
