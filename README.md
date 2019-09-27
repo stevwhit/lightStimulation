@@ -2,8 +2,8 @@
 This repository contains the code for the light stimulation project created Spring - Fall 2019 for a Senior Design project at IUPUI.
 
 ## username and password for our pi
-user: pi
-password: seniorDesign
+ - user: pi
+- password: seniorDesign
 
 ## quickstart
 This is code copied from google to authorize the SMTP connection for the IP start up code
