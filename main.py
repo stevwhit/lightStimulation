@@ -76,7 +76,7 @@ def pinFromOffset(offset):
     elif offset == 5:
         pin = 25
 
-    return pin 
+    return pin
 
 def columnSet(column, objects, dutyCycles):
     # sets up frequency and duty cycle for that column
@@ -88,9 +88,13 @@ def columnSet(column, objects, dutyCycles):
     objects[offset] = GPIO.PWM(pin, freq)
     dutyCycles[offset] = dc
 
-def runPWM(pwmArray):
+def runPWM(pwmArray, DCArray):
+    # this for loop will start all PWM objects with a duty cycle
+    # that is not negative (i.e. the initial value)
     for ii, each in enumerate(DCArray):
-        if each != 0:
+        if each >= 0:
+            pwmArray[ii].start(each)
+
 
 
 while(1):
@@ -115,8 +119,8 @@ while(1):
     #column value MUST be converted to a string
     column = str(column[0])
     # these arrays will store current settings in memory
-    pwmArray = [0, 0, 0, 0, 0, 0];
-    DCArray = [0, 0, 0, 0, 0, 0];
+    pwmArray = [-1, -1, -1, -1, -1, -1];
+    DCArray = [-1, -1, -1, -1, -1, -1];
     columnSet(column, pwmArray, DCArray)
 
     #todo: add input validation here for yes or no
