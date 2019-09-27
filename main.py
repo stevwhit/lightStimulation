@@ -155,8 +155,8 @@ def runPWM(pwmArray, DCArray):
 
         print("{0:.2f} minute long program complete!".format(length/60))
 
-
-while(1):
+continue = True
+while(continue):
     printStartup()
     column = list(input("Selection, A - F: "))
     #below loop performs input validation, confirms in put is a, b, c, d, e, f
@@ -195,3 +195,21 @@ while(1):
             setting = False
 
     runPWM(pwmArray, DCArray)
+
+    print("Would you like to continue with another program or exit?")
+    print("1) Continue")
+    print("2) Exit")
+    selection = 99
+    selection = int(input("Make a selection:"))
+    while selection != 1 and selection != 2:
+        print("Input rejected, try again.")
+        selection = input("Make a selection: ")
+    if selection == 1:
+        continue = True
+        print("------")
+        print("------")
+    elif selection == 2:
+        continue = False
+        print("Good bye!")
+
+GPIO.cleanup() 
