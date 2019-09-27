@@ -180,8 +180,15 @@ while(loop):
 
     #todo: add input validation here for yes or no
     print("Would you like to set another column?")
-    response = input("Type Yes or No: ")
-    if response == "Yes":
+    print("1) Yes")
+    print("2) No")
+    selection = 99
+    selection = int(input("Make a selection: "))
+    while selection != 1 and selection != 2:
+        print("Input rejected, try again.")
+        selection = input("Make a selection: ")
+        
+    if selection == 1:
         setting = True
     else:
         setting = False
