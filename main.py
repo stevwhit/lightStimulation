@@ -31,6 +31,7 @@ import time
 
 # set the pin numbering scheme
 GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
 #set all pins to output mode
 GPIO.setup(14, GPIO.OUT) #A
 GPIO.setup(15, GPIO.OUT) #B
@@ -38,7 +39,6 @@ GPIO.setup(18, GPIO.OUT) #C
 GPIO.setup(23, GPIO.OUT) #D
 GPIO.setup(24, GPIO.OUT) #E
 GPIO.setup(25, GPIO.OUT) #F
-GPIO.setwarnings(False)
 
 def getColumn():
     # input validating user selection of column
@@ -211,7 +211,7 @@ while(loop):
     try:
         selection = int(input("Make a selection: "))
     except:
-        selection = 99 
+        selection = 99
     while selection != 1 and selection != 2:
         print("Input rejected, try again.")
         try:
