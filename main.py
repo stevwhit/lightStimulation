@@ -40,6 +40,33 @@ GPIO.setup(24, GPIO.OUT) #E
 GPIO.setup(25, GPIO.OUT) #F
 GPIO.setwarnings(False)
 
+def getColumn():
+    # input validating user selection of column
+    print("1) Column A")
+    print("2) Column B")
+    print("3) Column C")
+    print("4) Column D")
+    print("5) Column E")
+    print("6) Column F")
+    selection = int(input("Make a selection:"))
+    while selection != 1 and selection != 2 and selection != 3 and selection != 4 and selection !=5 and selection != 6:
+        print("Input rejected, try again.")
+        selection = int(input("Make a selection: "))
+
+    if selection == 1:
+        column = "A"
+    elif selection == 2:
+        column = "B"
+    elif selection == 3:
+        column = "C"
+    elif selection == 4:
+        column = "D"
+    elif selection == 5:
+        column = "E"
+    elif selection == 6:
+        column = "F"
+    return column
+
 def saveSetting(PWM, DC):
     # this function will save settings to a text file
     # so user can eventually access saved settings in addtion
@@ -125,7 +152,6 @@ def runPWM(pwmArray, DCArray):
     print("2) Timed Start and Stop")
 
     #input validation on run selection
-    selection = 99
     selection = int(input("Make a selection: "))
     while selection != 1 and selection != 2:
         print("Input rejected, try again.")
@@ -164,15 +190,8 @@ def runPWM(pwmArray, DCArray):
 loop = True
 while(loop):
     printStartup()
-    column = list(input("Selection, A - F: "))
-    #below loop performs input validation, confirms in put is a, b, c, d, e, f
-    #can be either upper or lowercase
-    while not(((ord(column[0]) >= 65 and ord(column[0]) <= 70) or (ord(column[0])>=97 and ord(column[0])<=102))):
-        print("Input rejected, please type a letter A through F\n")
-        column = list(input("Selection, A - F: "))
+    column = getColumn()
 
-    #column value MUST be converted to a string
-    column = str(column[0])
     # these arrays will store current settings in memory
     pwmArray = [-1, -1, -1, -1, -1, -1];
     DCArray = [-1, -1, -1, -1, -1, -1];
@@ -182,7 +201,6 @@ while(loop):
     print("Would you like to set another column?")
     print("1) Yes")
     print("2) No")
-    selection = 99
     selection = int(input("Make a selection: "))
     while selection != 1 and selection != 2:
         print("Input rejected, try again.")
@@ -193,15 +211,17 @@ while(loop):
         setting = False
 
     while(setting):
-        column = list(input("Selection, A - F: "))
-        while not(((ord(column[0]) >= 65 and ord(column[0]) <= 70) or (ord(column[0])>=97 and ord(column[0])<=102))):
-            print("Input rejected, please type a letter A through F\n")
-            column = list(input("Selection, A - F: "))
-        column = str(column[0])
+        column = getColumn()
         columnSet(column, pwmArray, DCArray)
+        
         print("Would you like to set another column?")
-        response = input("Type Yes or No: ")
-        if response == "Yes":
+        print("1) Yes")
+        print("2) No")
+        selection = int(input("Make a selection: "))
+        while selection != 1 and selection != 2:
+            print("Input rejected, try again.")
+            selection = int(input("Make a selection: "))
+        if selection == 1:
             setting = True
         else:
             setting = False
@@ -212,7 +232,6 @@ while(loop):
     print("Would you like to continue with another program or exit?")
     print("1) Continue")
     print("2) Exit")
-    selection = 99
     selection = int(input("Make a selection:"))
     while selection != 1 and selection != 2:
         print("Input rejected, try again.")
