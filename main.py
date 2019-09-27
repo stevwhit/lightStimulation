@@ -27,6 +27,7 @@
 #change
 
 import RPi.GPIO as GPIO
+import time
 
 # set the pin numbering scheme
 GPIO.setmode(GPIO.BCM)
@@ -105,12 +106,14 @@ def runPWM(pwmArray, DCArray):
     x = input("Press enter to begin the PWM on all programmed channels: ")
     # this for loop will start all PWM objects with a duty cycle
     # that is not negative (i.e. the initial value)
+    startTime = time.time()
     for ii, each in enumerate(DCArray):
         if each >= 0:
             pwmArray[ii].start(each)
 
     x = input("Press enter to stop PWM on all programmed channels: ")
-
+    endTime = time.time()
+    print("Program ran for {0:.2f} seconds".format(endTime-startTime))
 
 
 while(1):
