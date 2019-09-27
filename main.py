@@ -40,9 +40,7 @@ GPIO.setup(25, GPIO.OUT) #F
 GPIO.setwarnings(False)
 
 def pinAndOffset(col):
-    # this is basically a switch case that controls
-    # what pin we activate and where the pwm object is stored
-    # based on the user-selected column
+    # function to get pin and offset from column value
     if column == "A":
         pin = 14
         offset = 0
@@ -64,6 +62,22 @@ def pinAndOffset(col):
 
     return [pin, offset]
 
+def pinFromOffset(offset):
+    if offset == 0:
+        pin = 14
+    elif offset == 1:
+        pin = 15
+    elif offset == 2:
+        pin = 18
+    elif offset == 3:
+        pin = 23
+    elif offset == 4:
+        pin = 24
+    elif offset == 5:
+        pin = 25
+
+    return pin 
+
 def columnSet(column, objects, dutyCycles):
     # sets up frequency and duty cycle for that column
     print("You have selected to program Column " + column)
@@ -75,8 +89,8 @@ def columnSet(column, objects, dutyCycles):
     dutyCycles[offset] = dc
 
 def runPWM(pwmArray):
-    # todo: write function that starts PWM for all desired columns
-    x = 0 #placeholder code
+    for ii, each in enumerate(DCArray):
+        if each != 0:
 
 
 while(1):
