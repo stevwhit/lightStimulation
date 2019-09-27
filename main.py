@@ -51,14 +51,14 @@ def getColumn():
     try:
         selection = int(input("Make a selection:"))
     except:
-        x = 0
+        selection = 99
 
     while selection != 1 and selection != 2 and selection != 3 and selection != 4 and selection !=5 and selection != 6:
         print("Input rejected, try again.")
         try:
             selection = int(input("Make a selection: "))
         except:
-            x = 0 
+            x = 0
 
     if selection == 1:
         column = "A"
@@ -211,7 +211,7 @@ while(loop):
     try:
         selection = int(input("Make a selection: "))
     except:
-        x = 0
+        selection = 99 
     while selection != 1 and selection != 2:
         print("Input rejected, try again.")
         try:
