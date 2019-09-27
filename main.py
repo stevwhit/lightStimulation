@@ -129,7 +129,7 @@ def runPWM(pwmArray, DCArray):
     selection = int(input("Make a selection: "))
     while selection != 1 and selection != 2:
         print("Input rejected, try again.")
-        selection = input("Make a selection: ")
+        selection = int(input("Make a selection: "))
 
     #manual start and stop
     if selection == 1:
@@ -169,7 +169,7 @@ while(loop):
     #can be either upper or lowercase
     while not(((ord(column[0]) >= 65 and ord(column[0]) <= 70) or (ord(column[0])>=97 and ord(column[0])<=102))):
         print("Input rejected, please type a letter A through F\n")
-        column = input("Selection, A - F: ")
+        column = list(input("Selection, A - F: "))
 
     #column value MUST be converted to a string
     column = str(column[0])
@@ -186,8 +186,7 @@ while(loop):
     selection = int(input("Make a selection: "))
     while selection != 1 and selection != 2:
         print("Input rejected, try again.")
-        selection = input("Make a selection: ")
-        
+        selection = int(input("Make a selection: "))
     if selection == 1:
         setting = True
     else:
@@ -197,7 +196,7 @@ while(loop):
         column = list(input("Selection, A - F: "))
         while not(((ord(column[0]) >= 65 and ord(column[0]) <= 70) or (ord(column[0])>=97 and ord(column[0])<=102))):
             print("Input rejected, please type a letter A through F\n")
-            column = input("Selection, A - F: ")
+            column = list(input("Selection, A - F: "))
         column = str(column[0])
         columnSet(column, pwmArray, DCArray)
         print("Would you like to set another column?")
@@ -217,7 +216,7 @@ while(loop):
     selection = int(input("Make a selection:"))
     while selection != 1 and selection != 2:
         print("Input rejected, try again.")
-        selection = input("Make a selection: ")
+        selection = int(input("Make a selection: "))
     if selection == 1:
         loop = True
         print("------")
