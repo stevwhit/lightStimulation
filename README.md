@@ -14,11 +14,11 @@ This code reads the device's IP address and sends an email out with the IP addre
 ## todo:
 ### requirements:
 - finish input validation on all user inputs
-- make main code executable from command line
-- talk to miguel about his requirements for the software 
+- make main code executable from command line (Taylor)
+- talk to miguel about his requirements for the software
 
 
 ### nice to have:
 - something that will store programmed settings in memory so user can access them later
-- program GUI for code 
-- get SSH working, set up static IP 
+- program GUI for code
+- get SSH working, set up static IP
