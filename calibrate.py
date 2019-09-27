@@ -37,6 +37,7 @@ GPIO.setup(18, GPIO.OUT)
 GPIO.setup(23, GPIO.OUT)
 GPIO.setup(24, GPIO.OUT)
 GPIO.setup(25, GPIO.OUT)
+GPIO.setwarnings(False)
 
 high = False
 print("Press enter to toggle GPIO lines")
