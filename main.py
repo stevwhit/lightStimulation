@@ -40,6 +40,12 @@ GPIO.setup(24, GPIO.OUT) #E
 GPIO.setup(25, GPIO.OUT) #F
 GPIO.setwarnings(False)
 
+def saveSetting(PWM, DC):
+    # this function will save settings to a text file
+    # so user can eventually access saved settings in addtion
+    # to creating new profiles
+    x = 0
+
 def printStartup():
     # function that simply prints the start up screen
     print("Welcome to the Light Stimulation set up process!")
@@ -155,8 +161,8 @@ def runPWM(pwmArray, DCArray):
 
         print("{0:.2f} minute long program complete!".format(length/60))
 
-continue = True
-while(continue):
+loop = True
+while(loop):
     printStartup()
     column = list(input("Selection, A - F: "))
     #below loop performs input validation, confirms in put is a, b, c, d, e, f
@@ -194,6 +200,7 @@ while(continue):
         else:
             setting = False
 
+    saveSetting(pwmArray, DCArray)
     runPWM(pwmArray, DCArray)
 
     print("Would you like to continue with another program or exit?")
@@ -205,11 +212,11 @@ while(continue):
         print("Input rejected, try again.")
         selection = input("Make a selection: ")
     if selection == 1:
-        continue = True
+        loop = True
         print("------")
         print("------")
     elif selection == 2:
-        continue = False
+        loop = False
         print("Good bye!")
 
-GPIO.cleanup() 
+GPIO.cleanup()
