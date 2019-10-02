@@ -197,6 +197,15 @@ def runPWM(pwmArray, DCArray):
     # timed start and stop
     else:
         length = float(input("Enter the program length in minutes: "))
+		
+		#new input validation for length.  Between 0 and 60.
+		while not 0 <= length < 60:
+        print("Input rejected, try again.  Requires value between 0 and 60.")
+        try:
+            length = float(input("Enter the program length in minutes: "))
+        except:
+            x = 0
+			
         #convert to seconds b/c that's how time library works
         length = length * 60
         x = input("Press enter to begin the PWM on all programmed channels: ")
