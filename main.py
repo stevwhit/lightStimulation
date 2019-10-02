@@ -136,7 +136,23 @@ def columnSet(column, objects, dutyCycles):
     # sets up frequency and duty cycle for that column
     print("You have selected to program Column " + column)
     freq = float(input("Please select the frequency: "))
+	
+	#new input validation for freq input, requires values between 0 and 20, should be changed
+	while not 0 <= freq < 20:
+        print("Input rejected, try again.  Requires value between 0 and 20.")
+        try:
+            freq = float(input("Please select the frequency: "))
+        except:
+            x = 0
+
     dc = float(input("Please select the duty cycle: "))
+	#new input validation for dc, requires values between 0 and 100.  0 being 0% and 100 being 100%.
+	while not 0 <= dc < 100:
+        print("Input rejected, try again.  Requires value between 0 and 100.")
+        try:
+            dc = float(input("Please select the duty cycle: "))
+        except:
+            x = 0
 
     [pin, offset] = pinAndOffset(column)
     objects[offset] = GPIO.PWM(pin, freq)
